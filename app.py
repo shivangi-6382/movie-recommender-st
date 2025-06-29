@@ -239,7 +239,7 @@ import pickle
 try:
     if not os.path.exists("similarity.pkl"):
         file_id = "1oUt1qdvcMT8s8Ae6AWupkuXJKZWIHnrK"  # replace with your actual ID
-        url = f"https://drive.google.com/uc?id={file_id}"
+        url = f"https://drive.google.com/file/d/{file_id}/view?usp=drive_link"
         gdown.download(url, "similarity.pkl", quiet=False)
 
     # Now load the file
