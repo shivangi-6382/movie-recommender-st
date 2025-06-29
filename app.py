@@ -166,7 +166,7 @@ def show_movie_cards(names, posters):
                 font-size: 14px;
                 border-top: 1px solid #eee;
             ">
-                Built with ❤️ by MotuFlix · © 2025
+                Built with ❤️ by MOVIE.Flix · © 2025
             </footer>
             """
     components.html(html, height=1500, scrolling=False)
@@ -235,14 +235,19 @@ import gdown
 import pickle
 
 # Only download if file doesn't exist
-if not os.path.exists("similarity.pkl"):
-    file_id = "1Om1ZDasOHNhhB8nhfNv6230ssfPts9sv"  # replace with your actual ID
-    url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, "similarity.pkl", quiet=False)
+try:
+    if not os.path.exists("similarity.pkl"):
+        file_id = "1Om1ZDasOHNhhB8nhfNv6230ssfPts9sv"  # replace with your actual ID
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, "similarity.pkl", quiet=False)
 
-# Now load the file
-with open("similarity.pkl", "rb") as f:
-    similarity = pickle.load(f)
+    # Now load the file
+    with open("similarity.pkl", "rb") as f:
+        similarity = pickle.load(f)
+except Exception as e:
+    st.error(f"⚠️ Failed to download file: {e}")
+
+
 
 
 st.title('Movie Recommender System')
