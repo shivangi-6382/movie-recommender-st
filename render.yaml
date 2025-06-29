@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: movie-recommender-st
+    env: python
+    buildCommand: ""
+    startCommand: streamlit run app.py --server.port=10000 --server.address=0.0.0.0
