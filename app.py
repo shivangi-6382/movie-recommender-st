@@ -5,6 +5,7 @@ import pickle
 import pandas as pd
 import requests
 import streamlit.components.v1 as components
+import joblib
 
 
 ########################################
@@ -237,13 +238,13 @@ import pickle
 # Only download if file doesn't exist
 try:
     if not os.path.exists("similarity.pkl"):
-        file_id = "1Om1ZDasOHNhhB8nhfNv6230ssfPts9sv"  # replace with your actual ID
+        file_id = "1oUt1qdvcMT8s8Ae6AWupkuXJKZWIHnrK"  # replace with your actual ID
         url = f"https://drive.google.com/uc?id={file_id}"
         gdown.download(url, "similarity.pkl", quiet=False)
 
     # Now load the file
-    with open("similarity.pkl", "rb") as f:
-        similarity = pickle.load(f)
+
+    similarity = joblib.load("similarity_compressed.pkl")
 except Exception as e:
     st.error(f"⚠️ Failed to download file: {e}")
 
